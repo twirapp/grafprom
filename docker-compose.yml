@@ -30,6 +30,7 @@ services:
     networks:
       - net    
       - twir
+      - traefik-public
 
   prometheus:
     image: portainer/template-swarm-monitoring:prometheus-v2.44.0
@@ -128,6 +129,8 @@ networks:
   net:
     driver: overlay
   twir:
+    external: true
+  traefik-public:
     external: true
 
 

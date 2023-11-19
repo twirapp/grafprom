@@ -58,6 +58,7 @@ services:
     networks:
       - net
       - twir
+      - traefik-public
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.0

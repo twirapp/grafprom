@@ -33,9 +33,7 @@ services:
       - traefik-public
 
   prometheus:
-    build:
-      context: ./prometheus
-      dockerfile: Dockerfile
+    image: portainer/template-swarm-monitoring:prometheus-v2.44.0
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--log.level=error'
@@ -59,6 +57,7 @@ services:
       - type: volume
         source: prometheus-data 
         target: /prometheus
+      - ./prometheus:/etc/prometheus/
     networks:
       - net
       - twir

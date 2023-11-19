@@ -33,7 +33,10 @@ services:
       - traefik-public
 
   prometheus:
-    image: portainer/template-swarm-monitoring:prometheus-v2.44.0
+    pull_policy: build
+    build:
+      context: ./prometheus
+      dockerfile: Dockerfile
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--log.level=error'
@@ -47,9 +50,15 @@ services:
         constraints:
           - node.role == manager
           - node.labels.monitoring == true
+       labels:
+        - traefik.enable=true
+        - traefik.http.routers.twir-grafana.rule=Host(`prometheus.twir.app`)
+        - traefik.http.routers.twir-grafana.middlewares=admin-auth
+        - traefik.http.services.twir-grafana.loadbalancer.server.port=9090
+        - traefik.docker.network=traefik-public
     volumes:
       - type: volume
-        source: prometheus-data
+        source: prometheus-data 
         target: /prometheus
     networks:
       - net

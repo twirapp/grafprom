@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - run: |
-          docker build -f Dockerfile \
+          docker build -f ./prometheus/Dockerfile \
           -t ${{ secrets.DOCKER_REGISTRY }}/twir/prometheus:latest \
           --cache-from type=gha,scope=twir-prometheus \
-          --cache-to type=gha,mode=max,scope=twir-prometheus prometheus
+          --cache-to type=gha,mode=max,scope=twir-prometheus ./prometheus
 
           docker push ${{ secrets.DOCKER_REGISTRY }}/twir/prometheus:latest

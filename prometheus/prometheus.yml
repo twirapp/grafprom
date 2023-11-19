@@ -36,3 +36,11 @@ scrape_configs:
         type: 'A'
         port: 3000
     metrics_path: '/metrics'
+
+  - job_name: 'twir-websockets'
+    dns_sd_configs:
+      - names:
+          - 'tasks.twir_websockets'
+        type: 'A'
+        port: 3004
+    metrics_path: '/metrics'

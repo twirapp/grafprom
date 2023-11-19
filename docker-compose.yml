@@ -33,7 +33,6 @@ services:
       - traefik-public
 
   prometheus:
-    pull_policy: build
     build:
       context: ./prometheus
       dockerfile: Dockerfile

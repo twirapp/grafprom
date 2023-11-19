@@ -32,7 +32,7 @@ services:
       - traefik-public
 
   prometheus:
-    image: portainer/template-swarm-monitoring:prometheus-v2.44.0
+    image: registry.satont.ru/twir/prometheus:latest
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--log.level=error'
@@ -55,7 +55,6 @@ services:
       - type: volume
         source: prometheus-data 
         target: /prometheus
-      - ./prometheus:/etc/prometheus/
     networks:
       - net
       - twir

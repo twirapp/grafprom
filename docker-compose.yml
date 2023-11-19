@@ -50,7 +50,7 @@ services:
         constraints:
           - node.role == manager
           - node.labels.monitoring == true
-       labels:
+      labels:
         - traefik.enable=true
         - traefik.http.routers.twir-grafana.rule=Host(`prometheus.twir.app`)
         - traefik.http.routers.twir-grafana.middlewares=admin-auth

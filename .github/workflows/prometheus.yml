@@ -15,8 +15,8 @@ jobs:
 
       - run: |
           docker build -f ./prometheus/Dockerfile \
-          -t ${{ secrets.DOCKER_REGISTRY }}/twir/prometheus:latest \
+          -t satont/twir-prometheus:latest \
           --cache-from type=gha,scope=twir-prometheus \
           --cache-to type=gha,mode=max,scope=twir-prometheus ./prometheus
 
-          docker push ${{ secrets.DOCKER_REGISTRY }}/twir/prometheus:latest
+          docker push satont/twir-prometheus:latest

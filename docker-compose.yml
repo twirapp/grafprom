@@ -32,7 +32,7 @@ services:
       - traefik-public
 
   prometheus:
-    image: registry.satont.ru/twir/prometheus:latest
+    image: twirapp/prometheus:latest
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--log.level=error'

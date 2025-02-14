@@ -89,7 +89,8 @@ services:
     image: prom/node-exporter:v1.8.2
     command:
       - '--path.rootfs=/host'
-    hostname: {{.Node.Hostname}}
+    environment:
+      - NODE_NAME
     deploy:
       mode: global
       resources:
@@ -99,6 +100,7 @@ services:
           memory: 64M
     volumes:
       - '/:/host:ro,rslave'
+      - /etc/hostname:/etc/hostname
     networks:
       - monitoring
       - twir

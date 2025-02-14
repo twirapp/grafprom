@@ -89,6 +89,7 @@ services:
     image: prom/node-exporter:v1.8.2
     command:
       - '--path.rootfs=/host'
+    hostname: {{.Node.Hostname}}
     deploy:
       mode: global
       resources:

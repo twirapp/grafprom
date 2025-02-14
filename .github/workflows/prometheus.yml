@@ -25,10 +25,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./prometheus
           platforms: linux/amd64,linux/arm64
           file: ./prometheus/Dockerfile
           push: true
           tags: twirapp/prometheus:latest
           cache-from: type=gha,scope=twir-prometheus
           cache-to: type=gha,mode=max,scope=twir-prometheus
+
